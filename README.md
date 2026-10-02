@@ -13,6 +13,18 @@ One command turns a rigged character (for example a Meshy export with a Mixamo s
 
 ## Install
 
+bpy ships wheels only for **Python 3.11**, so both paths pin that interpreter.
+
+### With uv (recommended)
+
+```bash
+uv venv --python 3.11            # create .venv on Python 3.11
+uv sync --extra dev              # install charlib + deps from pyproject.toml (incl. pytest)
+#   uv pip install -r requirements.txt   # alternative: install from requirements.txt instead of the lockfile
+```
+
+### With venv + pip
+
 ```bash
 python3.11 -m venv .venv && source .venv/bin/activate   # bpy needs Python 3.11
 pip install -r requirements.txt
@@ -20,8 +32,14 @@ pip install -r requirements.txt
 
 ## Build
 
+With uv, prefix the command with `uv run` (no need to activate the venv); with venv+pip, activate first and drop the prefix.
+
 ```bash
-python -m charlib.build --glb path/to/character.glb --out out/MyChar --name MyChar
+uv run python -m charlib.build --glb path/to/character.glb --out out/MyChar --name MyChar
+#   or, after `source .venv/bin/activate`:
+#   python -m charlib.build --glb path/to/character.glb --out out/MyChar --name MyChar
+#   or use the installed entry point:  charlib --glb ... --out ... --name ...
+#
 #   --config character.json   override landmarks, framing or expression list (see character.example.json)
 #   --no-previews             skip the preview renders (faster)
 #   --allow-no-face           blank face texture: build actions only

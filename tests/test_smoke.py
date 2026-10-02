@@ -1,4 +1,4 @@
-"""End-to-end smoke test: CHARLIB_TEST_GLB=path/to.glb python -m pytest tests -q  (or run this file directly)."""
+"""End-to-end smoke test: CHARLIB_TEST_GLB=path/to.glb uv run pytest tests -q  (or: python -m pytest tests -q, or run this file directly)."""
 import json, os, sys, tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
