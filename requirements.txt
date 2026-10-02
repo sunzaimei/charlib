@@ -1,0 +1,4 @@
+bpy==5.0.*            # Blender as a Python module (needs Python 3.11)
+numpy<2
+pillow>=10
+opencv-python-headless>=4.8
